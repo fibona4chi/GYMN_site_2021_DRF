@@ -4,8 +4,9 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from taggit.models import Tag
 
-from .serializers import *
-from .models import *
+from .serializers import PostWorkoutSerializer, PostContentSerializer, TagSerializer, ContactSerializer, \
+    RegisterSerializer, UserSerializer, CommentSerializer
+from .models import PostWorkout, PostContent, Comment
 from rest_framework import permissions
 
 
@@ -16,6 +17,8 @@ class PageNumberSetPagination(pagination.PageNumberPagination):
 
 
 class PostWorkoutViewSet(viewsets.ModelViewSet):
+    search_fields = ['content', 'title']
+    filter_backends = (filters.SearchFilter,)
     serializer_class = PostWorkoutSerializer
     queryset = PostWorkout.objects.all()
     lookup_field = 'slug'
@@ -28,7 +31,7 @@ class PostContentViewSet(viewsets.ModelViewSet):
     filter_backends = (filters.SearchFilter,)
     serializer_class = PostContentSerializer
     queryset = PostContent.objects.all()
-    lookup_field = 'slug'
+    lookup_field = "slug"
     permission_classes = [permissions.AllowAny]
     pagination_class = PageNumberSetPagination
 

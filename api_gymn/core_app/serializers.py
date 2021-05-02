@@ -13,7 +13,7 @@ class PostWorkoutSerializer(serializers.ModelSerializer):
         fields = ("id", "title", "slug", "description", "content", "image", "is_published")
         lookup_field = 'slug'
         extra_kwargs = {
-            'url': {'lookup_field': 'slug'}
+            'url': {'lookup_field': 'slug'},
         }
 
 

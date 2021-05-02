@@ -2,9 +2,9 @@ from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from .views import *
 
-router = DefaultRouter(trailing_slash=False)
-router.register('workouts/', PostWorkoutViewSet, basename='workouts')
-router.register('posts/', PostContentViewSet, basename='posts')
+router = DefaultRouter()
+router.register('workouts', PostWorkoutViewSet, basename='workouts')
+router.register('posts', PostContentViewSet, basename='posts')
 
 urlpatterns = [
     path('', include(router.urls)),
