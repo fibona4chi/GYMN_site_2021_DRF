@@ -87,7 +87,7 @@ class CommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comment
         fields = ("id", "post", "username", "text", "created_date",)
-        lookup_field = 'id'
-        extra_kwargs = {
-            'url': {'lookup_field': 'id'}
-        }
+        # lookup_field = 'id'
+        # extra_kwargs = {
+        #     'url': {'lookup_field': 'id'}
+        # }
